@@ -1,14 +1,18 @@
 import React from 'react';
 
-import { Navbar, NavItem, Row } from 'react-materialize';
+import { Navbar, NavItem, Row, Button } from 'react-materialize';
+import './header.scss';
 
 const Header = () => (
   <Row>
-    <Navbar brand='Recom' right className='purple darken-4'>
-      <NavItem href='/'>Movies</NavItem>
-      <NavItem href='/'>Series</NavItem>
-      <NavItem href='/'>Music</NavItem>
-      <NavItem href='/'>Books</NavItem>
+    <Navbar brand={<div className="logo"><img src="logo.png" alt="Pixel Kairos" /></div>} right className='white'>
+      <NavItem href='/'><div className="navitem">Home</div></NavItem>
+      <NavItem href='/'><div className="navitem">A empresa</div></NavItem>
+      <NavItem href='/'><div className="navitem">Loja</div></NavItem>
+      <NavItem href='/'><div className="navitem">Contato</div></NavItem>
+      <div className="nav-btn-container">
+        <Button className="nav-btn">Entrar</Button>
+      </div>
     </Navbar>
   </Row>
 );
