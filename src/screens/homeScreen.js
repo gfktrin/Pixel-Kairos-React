@@ -7,7 +7,7 @@ import './homeScreen.scss';
 const HomeScreen = () => (
   <main>
     <Hero />
-    <Container>
+    <Container id="container-home">
       <Row>
         <Col m={4} s={12}>
           <Card className='white darken-1' textClassName='black-text' title={<div class="card-title"><Icon medium className="more-black">attach_money</Icon><h4>Preço</h4></div>}>

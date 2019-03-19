@@ -13,7 +13,7 @@ const Hero = () => (
           <p className="description">
             Aprenda a desenvolver de forma eficiente com as melhores ferramentas do mercado em cursos completos e com preço acessível
           </p>
-          <a href="/">
+          <a href="#container-home">
             <Icon large className="more">expand_more</Icon>
           </a>
         </div>
