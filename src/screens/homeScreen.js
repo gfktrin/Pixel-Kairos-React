@@ -4,6 +4,7 @@ import { Container, Button } from 'react-materialize';
 import Hero from '../components/hero/hero';
 import HomeCards from '../components/homeCards/homeCards';
 import CoursesSectionHome from '../components/coursesSectionHome/coursesSectionHome';
+import HomeCourses from '../components/homeCourses/homeCourses';
 
 import './homeScreen.scss';
 
@@ -14,6 +15,9 @@ const HomeScreen = () => (
       <HomeCards />
     </Container>
     <CoursesSectionHome />
+    <Container>
+      <HomeCourses />
+    </Container>
     <div className="fixed-action-btn horizontal">
     <Button floating large className='teal darken-3' waves='light' icon='add' class="floating" />
     </div>
