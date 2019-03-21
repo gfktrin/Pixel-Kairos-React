@@ -7,6 +7,7 @@ import CoursesSectionHome from '../components/coursesSectionHome/coursesSectionH
 import HomeCourses from '../components/homeCourses/homeCourses';
 
 import './homeScreen.scss';
+import HomeFooter from '../components/homeFooter/homeFooter';
 
 const HomeScreen = () => (
   <main>
@@ -18,8 +19,9 @@ const HomeScreen = () => (
     <Container>
       <HomeCourses />
     </Container>
+    <HomeFooter />
     <div className="fixed-action-btn horizontal">
-    <Button floating large className='teal darken-3' waves='light' icon='add' class="floating" />
+    <Button floating large className='teal darken-3' waves='light' icon='announcement' class="floating" />
     </div>
   </main>
 );
