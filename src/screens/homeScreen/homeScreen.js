@@ -1,16 +1,18 @@
 import React from 'react';
 
 import { Container, Button } from 'react-materialize';
-import Hero from '../components/hero/hero';
-import HomeCards from '../components/homeCards/homeCards';
-import CoursesSectionHome from '../components/coursesSectionHome/coursesSectionHome';
-import HomeCourses from '../components/homeCourses/homeCourses';
+import Hero from '../../components/hero/hero';
+import HomeCards from '../../components/homeCards/homeCards';
+import CoursesSectionHome from '../../components/coursesSectionHome/coursesSectionHome';
+import HomeCourses from '../../components/homeCourses/homeCourses';
+import HomeFooter from '../../components/homeFooter/homeFooter';
+import Header from '../../components/header/header';
 
 import './homeScreen.scss';
-import HomeFooter from '../components/homeFooter/homeFooter';
 
 const HomeScreen = () => (
   <main>
+    <Header />
     <Hero />
     <Container id="container-home">
       <HomeCards />

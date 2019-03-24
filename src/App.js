@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-
-import Header from './components/header/header';
-import HomeScreen from './screens/homeScreen';
+import Routes from './components/Routes/routes';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <HomeScreen />
-      </div>
+      <Routes />
     );
   }
 }

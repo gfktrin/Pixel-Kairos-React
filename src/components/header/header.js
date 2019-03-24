@@ -1,17 +1,20 @@
 import React from 'react';
 
-import { Navbar, NavItem, Row, Button } from 'react-materialize';
+import { Navbar, Row, Button } from 'react-materialize';
+import { NavLink } from 'react-router-dom';
 import './header.scss';
 
 const Header = () => (
   <Row>
     <Navbar brand={<div className="logo"><img src="logo.png" alt="Pixel Kairos" /></div>} right className='white'>
-      <NavItem href='/'><div className="navitem">Home</div></NavItem>
-      <NavItem href='/'><div className="navitem">A empresa</div></NavItem>
-      <NavItem href='/'><div className="navitem">Loja</div></NavItem>
-      <NavItem href='/'><div className="navitem">Contato</div></NavItem>
+      <li><NavLink to="/"><div className="navitem">Home</div></NavLink></li>
+      <li><NavLink to="/empresa"><div className="navitem">A empresa</div></NavLink></li>
+      <li><NavLink to="/loja"><div className="navitem">Loja</div></NavLink></li>
+      <li><NavLink to="/contato"><div className="navitem">Contato</div></NavLink></li>
       <div className="nav-btn-container">
-        <Button className="nav-btn">Entrar</Button>
+        <NavLink to="/login">
+          <Button className="nav-btn">Entrar</Button>
+        </NavLink>
       </div>
     </Navbar>
   </Row>
