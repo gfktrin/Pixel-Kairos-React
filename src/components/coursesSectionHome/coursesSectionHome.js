@@ -7,7 +7,7 @@ const CoursesSectionHome = () => (
     <div className="courses-section-text">
       <h4 className="courses-section-title">Conheça nossos cursos</h4>
       <p className="courses-section-description">
-        Aprenda a desenvolver de forma eficiente com as melhores ferramentas do mercado em cursos completos e com preço acessível
+        Com nossos cursos, você desenvolverá produtos de qualidade sem necessidade de qualquer conhecimento prévio
       </p>
     </div>
   </div>
