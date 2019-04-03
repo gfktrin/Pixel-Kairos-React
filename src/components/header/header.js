@@ -10,7 +10,6 @@ const Header = () => (
       <li><NavLink to="/"><div className="navitem">Home</div></NavLink></li>
       <li><NavLink to="/empresa"><div className="navitem">A empresa</div></NavLink></li>
       <li><NavLink to="/loja"><div className="navitem">Loja</div></NavLink></li>
-      <li><NavLink to="/contato"><div className="navitem">Contato</div></NavLink></li>
       <div className="nav-btn-container">
         <NavLink to="/login">
           <Button className="nav-btn">Entrar</Button>
