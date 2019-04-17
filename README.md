@@ -1,3 +1,6 @@
+Projeto front-end que suporta [pixelkairos.com.br](http://pixelkairos.com.br/).
+Consome API que pode ser encontrada em: https://github.com/gfktrin/Pixel-Kairos-API
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
