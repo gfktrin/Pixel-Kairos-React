@@ -21,8 +21,11 @@ class HomeCourses extends React.Component {
   getCourseCards = (courses) => {
     return (
       courses.map(course => (
-        <CourseCard courseName={course.name}
-            courseDescription={course.description} />
+        <Col m={4} s={12}>
+          <CourseCard courseName={course.name}
+              courseDescription={course.description}
+              courseImg={course.card_img} />
+        </Col>
       ))
     )
   }
@@ -34,9 +37,7 @@ class HomeCourses extends React.Component {
     return(
       <div className="home-courses-container">
         <Row>
-          <Col m={4} s={12}>
             {courseCards}
-          </Col>
         </Row>
       </div>
     );

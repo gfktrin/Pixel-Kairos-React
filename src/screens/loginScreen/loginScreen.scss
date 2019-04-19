@@ -1,1 +1,29 @@
+.login-container {
+  font-size: 17px;
+}
 
+.login-card-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(8%); /* or try 50% */
+}
+
+.login-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.forgot-pass {
+  margin-left: 15px;
+}
+
+.register {
+  text-align: center;
+}
