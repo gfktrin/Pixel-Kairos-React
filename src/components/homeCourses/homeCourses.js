@@ -3,16 +3,44 @@ import { Row, Col } from 'react-materialize';
 
 import './homeCourses.scss';
 import CourseCard from '../courseCard/courseCard';
+import ApiWrapper from '../utils/api';
 
-const HomeCourses = () => (
-  <div className="home-courses-container">
-    <Row>
-      <Col m={4} s={12}>
-      <CourseCard courseName='Curso de desenvolvimento de games'
-        courseDescription='Já sonhou em criar seu proprio jogo? Com esse curso, você vai aprender a criar jogos de diferentes tipos com várias ferramentas, de forma que qualquer um possa tirar seu projeto do papel.' />
-      </Col>
-    </Row>
-  </div>
-);
+class HomeCourses extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      courses: null,
+    }
+  }
+
+  componentDidMount() {
+    ApiWrapper.getData('courses')
+    .then(data => this.setState({ courses: data }));
+  }
+
+  getCourseCards = (courses) => {
+    return (
+      courses.map(course => (
+        <CourseCard courseName={course.name}
+            courseDescription={course.description} />
+      ))
+    )
+  }
+
+  render() {
+    const courses = this.state.courses ? this.state.courses : '';
+    const courseCards = courses ? this.getCourseCards(courses) : '';
+
+    return(
+      <div className="home-courses-container">
+        <Row>
+          <Col m={4} s={12}>
+            {courseCards}
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
 
 export default HomeCourses;
