@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Container, Input, Card, Row, Col, Button } from 'react-materialize';
 
 import './loginScreen.scss';
@@ -53,7 +54,12 @@ class LoginScreen extends React.Component {
     };
     ApiWrapper.makeLogin(credentials)
     .then(response => {
-      console.log(response)
+      if (response === 'error') {
+        console.log('deu ruim');
+      }
+      if (response === 'success') {
+        this.props.history.push('/');
+      }
     });
   }
 
