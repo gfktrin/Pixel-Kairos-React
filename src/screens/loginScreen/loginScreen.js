@@ -48,6 +48,9 @@ class LoginScreen extends React.Component {
 
   handleSubmitLogin (e) {
     e.preventDefault();
+    this.setState({
+      isLoading: true,
+    });
     let credentials = {
       email: this.state.email,
       password: this.state.password,
@@ -56,6 +59,9 @@ class LoginScreen extends React.Component {
     .then(response => {
       if (response === 'error') {
         console.log('deu ruim');
+        this.setState({
+          isLoading: false,
+        });
       }
       if (response === 'success') {
         this.props.history.push('/');
@@ -102,6 +108,18 @@ class LoginScreen extends React.Component {
     )
   }
 
+  checkLoading () {
+    if (this.state.isLoading) {
+      return (
+        <Loader />
+      );
+    }
+    if (this.state.hasAccount) {
+      return this.showLoginForm();
+    }
+    return this.showRegisterForm();
+  }
+
   render () {
     return (
       <main>
@@ -110,7 +128,7 @@ class LoginScreen extends React.Component {
             <Col m={3} s={12} />
             <Col m={6} s={12}>
             <Card className='large white darken-1'>
-              {this.state.hasAccount ? this.showLoginForm() : this.showRegisterForm()}
+              {this.checkLoading()}
             </Card>
             </Col>
           </Row>
