@@ -3,6 +3,7 @@ import { Container, Input, Card, Row, Col, Button } from 'react-materialize';
 
 import './loginScreen.scss';
 import ApiWrapper from '../../components/utils/api';
+import Loader from '../../components/loader/loader';
 
 class LoginScreen extends React.Component {
 
@@ -16,6 +17,7 @@ class LoginScreen extends React.Component {
       email : '',
       password: '',
       hasAccount: true,
+      isLoading: false,
     };
   }
 
@@ -49,8 +51,10 @@ class LoginScreen extends React.Component {
       email: this.state.email,
       password: this.state.password,
     };
-    console.log(credentials);
-    ApiWrapper.makeLogin(credentials);
+    ApiWrapper.makeLogin(credentials)
+    .then(response => {
+      console.log(response)
+    });
   }
 
   showRegisterForm () {
