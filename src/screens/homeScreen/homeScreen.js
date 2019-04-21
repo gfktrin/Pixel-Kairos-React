@@ -9,23 +9,46 @@ import HomeFooter from '../../components/homeFooter/homeFooter';
 import Header from '../../components/header/header';
 
 import './homeScreen.scss';
+import ApiWrapper from '../../components/utils/api';
 
-const HomeScreen = () => (
-  <main>
-    <Header />
-    <Hero />
-    <Container id="container-home">
-      <HomeCards />
-    </Container>
-    <CoursesSectionHome />
-    <Container>
-      <HomeCourses />
-    </Container>
-    <HomeFooter />
-    <div className="fixed-action-btn horizontal">
-    <Button floating large className='teal darken-3' waves='light' icon='announcement' class="floating" />
-    </div>
-  </main>
-);
+class HomeScreen  extends React.Component {
+  guestscreen() {
+    return (
+      <div>
+        <Hero />
+        <Container id="container-home">
+          <HomeCards />
+        </Container>
+        <CoursesSectionHome />
+        <Container>
+          <HomeCourses />
+        </Container>
+        <HomeFooter />
+        <div className="fixed-action-btn horizontal">
+          <Button floating large className='teal darken-3' waves='light' icon='announcement' class="floating" />
+        </div>
+      </div>
+    )
+  }
+
+  userScreen() {
+    return(
+      <div>
+        <div className="fixed-action-btn horizontal">
+          <Button floating large className='teal darken-3' waves='light' icon='announcement' class="floating" />
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <main>
+        <Header />
+        {ApiWrapper.isAuthenticated() ? this.userScreen() : this.guestscreen()}
+      </main>
+    );
+  }
+}
 
 export default HomeScreen;
