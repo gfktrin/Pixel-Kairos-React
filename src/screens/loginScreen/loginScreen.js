@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { Container, Input, Card, Row, Col, Button } from 'react-materialize';
 
 import './loginScreen.scss';

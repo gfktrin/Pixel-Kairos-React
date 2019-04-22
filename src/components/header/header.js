@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Navbar, Row, Button, SideNav, SideNavItem, Input } from 'react-materialize';
+import { Navbar, Row, Button, SideNav, SideNavItem } from 'react-materialize';
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 import ApiWrapper from '../utils/api';
@@ -34,11 +34,13 @@ class Header extends React.Component {
 
   userHeader() {
     return (
-      <SideNav fixed trigger={<Button icon="keyboard_arrow_right" className="nav-btn" />} options={{closeOnClick: true}}>
+      <SideNav fixed trigger={
+        <Button icon="keyboard_arrow_right" className="nav-btn" />
+        } options={{closeOnClick: true}}>
         <SideNavItem userView user={{
             background: 'https://placeimg.com/640/480/tech',
             image: 'static/media/react-materialize-logo.824c6ea3.svg',
-            name: 'John Doe',
+            name: 'Aluno',
           }} />
           <li>
             <select class="browser-default">

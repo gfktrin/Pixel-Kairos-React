@@ -12,7 +12,7 @@ const Routes = () => (
     <Route path='/empresa' component={AboutScreen}/>
     <Route path='/loja' component={ShopScreen}/>
     <Route path='/login' component={LoginScreen}/>
-    <PrivateRoute path='/home'component={() => <h1>Logado</h1> } />
+    <PrivateRoute path='/configuracoes'component={() => <h1>Logado</h1> } />
   </Router>
 );
 

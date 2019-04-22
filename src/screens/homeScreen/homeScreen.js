@@ -7,9 +7,10 @@ import CoursesSectionHome from '../../components/coursesSectionHome/coursesSecti
 import HomeCourses from '../../components/homeCourses/homeCourses';
 import HomeFooter from '../../components/homeFooter/homeFooter';
 import Header from '../../components/header/header';
+import ApiWrapper from '../../components/utils/api';
+import CoursePanel from '../../components/coursePanel/coursePanel';
 
 import './homeScreen.scss';
-import ApiWrapper from '../../components/utils/api';
 
 class HomeScreen  extends React.Component {
   guestscreen() {
@@ -33,11 +34,7 @@ class HomeScreen  extends React.Component {
 
   userScreen() {
     return(
-      <div>
-        <div className="fixed-action-btn horizontal">
-          <Button floating large className='teal darken-3' waves='light' icon='announcement' class="floating" />
-        </div>
-      </div>
+      <CoursePanel />
     );
   }
 
