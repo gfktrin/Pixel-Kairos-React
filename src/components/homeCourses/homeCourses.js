@@ -15,7 +15,7 @@ class HomeCourses extends React.Component {
 
   componentDidMount() {
     ApiWrapper.getData('courses')
-    .then(data => this.setState({ courses: data }));
+    .then(response => this.setState({ courses: response.data }));
   }
 
   getCourseCards = (courses) => {
