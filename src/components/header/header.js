@@ -4,6 +4,7 @@ import { Navbar, Row, Button, SideNav, SideNavItem } from 'react-materialize';
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 import ApiWrapper from '../utils/api';
+import UserStore from '../store/userStore';
 
 class Header extends React.Component {
   constructor(props) {
@@ -32,6 +33,30 @@ class Header extends React.Component {
     );
   }
 
+  getCoursesOptions() {
+    let store = this.props.store;
+    let courses = store.get('courses');
+
+    if(!courses) {
+      return null;
+    }
+
+    return(
+      courses.map(course => (
+        <option key={course.id} value={course.id}>{course.name}</option>
+      ))
+    );
+  }
+
+  handleSelectCourse = (e) => {
+    let store = this.props.store;
+    let courses = store.get('courses');
+    const selectedCourseId = Number(e.target.value);
+    const selectedCourse = courses.find(x => x.id === selectedCourseId);
+
+    store.set('selectedCourse')(selectedCourse);
+  }
+
   userHeader() {
     return (
       <SideNav fixed trigger={
@@ -43,11 +68,9 @@ class Header extends React.Component {
             name: 'Aluno',
           }} />
           <li>
-            <select class="browser-default">
-              <option value="" disabled selected>Escolha um curso</option>
-              <option value="1">Desenvolvimento de Games</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <select class="browser-default" onChange={this.handleSelectCourse}>
+              <option value="default" disabled selected>Escolha um curso</option>
+              { this.getCoursesOptions() }
             </select>
           </li>
         <SideNavItem divider />
@@ -70,4 +93,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default UserStore.withStore(Header);

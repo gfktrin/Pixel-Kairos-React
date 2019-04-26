@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, Input, Card, Row, Col, Button } from 'react-materialize';
 
 import './loginScreen.scss';
-import ApiWrapper from '../../components/utils/api';
+import ApiWrapper, { TOKEN_KEY } from '../../components/utils/api';
 import Loader from '../../components/loader/loader';
-
+import UserStore from '../../components/store/userStore';
 class LoginScreen extends React.Component {
 
   constructor(props) {
@@ -46,6 +46,8 @@ class LoginScreen extends React.Component {
   }
 
   handleSubmitLogin (e) {
+    let store = this.props.store;
+
     e.preventDefault();
     this.setState({
       isLoading: true,
@@ -55,6 +57,20 @@ class LoginScreen extends React.Component {
       password: this.state.password,
     };
     ApiWrapper.makeLogin(credentials)
+    .then(response => {
+      if (response.error) {
+        console.log(response.error);
+        return 'error';
+      }
+      if (response.access_token) {
+        console.log(response.access_token);
+        localStorage.setItem(TOKEN_KEY, response.access_token);
+        store.set('name')(response.name);
+        store.set('id')(response.id);
+        store.set('courses')(response.courses);
+        return 'success';
+      }
+    })
     .then(response => {
       if (response === 'error') {
         console.log('deu ruim');
@@ -137,4 +153,4 @@ class LoginScreen extends React.Component {
   }
 }
 
-export default LoginScreen;
+export default UserStore.withStore(LoginScreen);
