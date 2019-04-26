@@ -64,7 +64,7 @@ class Header extends React.Component {
         } options={{closeOnClick: true}}>
         <SideNavItem userView user={{
             background: 'https://placeimg.com/640/480/tech',
-            image: 'static/media/react-materialize-logo.824c6ea3.svg',
+            image: 'userIcon.png',
             name: 'Aluno',
           }} />
           <li>
