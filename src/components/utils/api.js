@@ -1,5 +1,5 @@
 const PIXEL_KAIROS_API = 'http://localhost/pixelKairos/public/api/';
-const TOKEN_KEY = 'PK_TOKEN';
+export const TOKEN_KEY = 'PK_TOKEN';
 
 class ApiWrapper {
   static getData(entity) {
@@ -20,18 +20,7 @@ class ApiWrapper {
         },
         body : JSON.stringify(credentials)
       }
-    ).then(response => response.json())
-    .then(response => {
-      if (response.error) {
-        console.log(response.error);
-        return 'error';
-      }
-      if (response.access_token) {
-        console.log(response.access_token);
-        localStorage.setItem(TOKEN_KEY, response.access_token);
-        return 'success';
-      }
-    });
+    ).then(response => response.json());
   }
 
   static logout() {
