@@ -1,10 +1,21 @@
 import React from 'react';
-import { Row, Col, Collapsible, CollapsibleItem } from 'react-materialize';
+import { Row, Col, Collapsible, CollapsibleItem, Modal, Button, Icon } from 'react-materialize';
+import UserStore from '../store/userStore';
+import LessonPlayer from '../lessonPlayer/lessonPlayer';
 
 import './coursePanel.scss';
-import UserStore from '../store/userStore';
 
 class CoursePanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLessonPlaying: false,
+    }
+  }
+
+  handlePlayLesson = () => {
+    this.setState({ isLessonPlaying: true });
+  }
 
   getModuleLessons(courseModule) {
     if(!courseModule) {
@@ -13,10 +24,10 @@ class CoursePanel extends React.Component {
 
     return(
       courseModule.lessons.map(lesson => (
-        <CollapsibleItem header={lesson.name} icon="ondemand_video">
-          <a href="#">
-            <img className="video-thumb" alt="Video thumbnail" src="video-thumb.jpg" width="150" height="100" />
-          </a>
+        <CollapsibleItem header={lesson.name} icon="ondemand_video" className="lesson-collapsible">
+          <Button href="javascript:void(0)" id="video-btn" onClick={this.handlePlayLesson}>
+            <Icon large className="hero-more">play_arrow</Icon>
+          </Button>
         </CollapsibleItem>
       ))
     );
@@ -41,6 +52,23 @@ class CoursePanel extends React.Component {
     );
   }
 
+  showLessonPlayer() {
+    return(
+      <LessonPlayer />
+    );
+  }
+
+  showCourseNavigation(selectedCourse){
+    return (
+      <div>
+        <h5 className="subtitle">{ selectedCourse ? selectedCourse.name : null }</h5>
+        <Collapsible>
+          { this.getCourseModules() }
+        </Collapsible>
+      </div>
+    );
+  }
+
   render() {
     let store = this.props.store;
     const selectedCourse = store.get('selectedCourse');
@@ -50,10 +78,7 @@ class CoursePanel extends React.Component {
         <Row>
           <Col m={3} s={12} />
           <Col m={8} s={12}>
-            <h5 className="subtitle">{ selectedCourse ? selectedCourse.name : null }</h5>
-            <Collapsible>
-              { this.getCourseModules() }
-            </Collapsible>
+          { this.state.isLessonPlaying ? this.showLessonPlayer() : this.showCourseNavigation(selectedCourse) }
           </Col>
         </Row>
       </div>
