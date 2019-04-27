@@ -5,3 +5,29 @@
   background-color: black;
 }
 
+.lesson-back,
+.lesson-back.active.focus,
+.lesson-back.active:focus,
+.lesson-back.focus,
+.lesson-back.focus:active,
+.lesson-back:active:focus,
+.lesson-back:focus{
+  margin-right: 5px;
+  background-color: transparent !important;
+  color: grey;
+  outline: 0 !important;
+  outline-offset: 0  !important;
+  background-image: none  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important;
+}
+
+.lesson-back > .material-icons {
+  color: grey;
+  background-color: transparent;
+}
+
+.lesson-name-video{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

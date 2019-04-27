@@ -10,11 +10,27 @@ class CoursePanel extends React.Component {
     super(props);
     this.state = {
       isLessonPlaying: false,
+      lessonVideo: null,
+      lessonName: null,
     }
   }
 
-  handlePlayLesson = () => {
-    this.setState({ isLessonPlaying: true });
+  handlePlayLesson = (lesson) => {
+    const isLessonPlaying = this.state.isLessonPlaying;
+
+    if(!isLessonPlaying) {
+      this.setState({
+        isLessonPlaying: true,
+        lessonVideo: lesson.link,
+        lessonName: lesson.name,
+      });
+    } else {
+      this.setState({
+        isLessonPlaying: false,
+        lessonVideo: null,
+        lessonName: null,
+      });
+    }
   }
 
   getModuleLessons(courseModule) {
@@ -25,7 +41,7 @@ class CoursePanel extends React.Component {
     return(
       courseModule.lessons.map(lesson => (
         <CollapsibleItem header={lesson.name} icon="ondemand_video" className="lesson-collapsible">
-          <Button href="javascript:void(0)" id="video-btn" onClick={this.handlePlayLesson}>
+          <Button href="javascript:void(0)" id="video-btn" onClick={() => this.handlePlayLesson(lesson)}>
             <Icon large className="hero-more">play_arrow</Icon>
           </Button>
         </CollapsibleItem>
@@ -54,7 +70,16 @@ class CoursePanel extends React.Component {
 
   showLessonPlayer() {
     return(
-      <LessonPlayer />
+      <div>
+        <Button waves="light" className="lesson-back" onClick={this.handlePlayLesson}>
+        Voltar
+        <Icon left>
+        arrow_back_ios
+        </Icon>
+        </Button>
+        <h5 className="lesson-name-video">{this.state.lessonName}</h5>
+        <LessonPlayer lessonVideo={this.state.lessonVideo} />
+      </div>
     );
   }
 

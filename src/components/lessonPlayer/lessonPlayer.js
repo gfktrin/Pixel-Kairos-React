@@ -1,10 +1,14 @@
 import React from 'react';
-
+import { Player } from 'video-react';
 //import { Icon } from 'react-materialize';
 import './lessonPlayer.scss';
+import '../../../node_modules/video-react/dist/video-react.css';
 
-const LessonPlayer = () => (
-  <iframe className="iframe" src="https://drive.google.com/file/d/1it5Z8sINAG46kaww_n05stkcr9KOMKuk/preview"></iframe>
+const LessonPlayer = (props) => (
+  <Player
+  playsInline
+  src={props.lessonVideo}
+  />
 );
 
 export default LessonPlayer;
