@@ -15,6 +15,11 @@ class CoursePanel extends React.Component {
     }
   }
 
+  componentDidMount() {
+    let store = this.props.store;
+    store.set('selectedCourse')(undefined);
+  }
+
   handlePlayLesson = (lesson) => {
     const isLessonPlaying = this.state.isLessonPlaying;
 
