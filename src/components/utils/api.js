@@ -1,4 +1,4 @@
-const PIXEL_KAIROS_API = 'http://localhost/pixelKairos/public/api/';
+export const PIXEL_KAIROS_API = 'http://localhost/pixelKairos/public/api/';
 export const TOKEN_KEY = 'PK_TOKEN';
 
 class ApiWrapper {
@@ -23,11 +23,11 @@ class ApiWrapper {
       }
     );
 
-    return await response.json();;
+    return await response.json();
   }
 
   static async logout() {
-    let tokenToRemove = localStorage.getItem(TOKEN_KEY);
+    const tokenToRemove = localStorage.getItem(TOKEN_KEY);
 
     localStorage.removeItem(TOKEN_KEY);
 
