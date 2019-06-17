@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Collapsible, CollapsibleItem, Modal, Button, Icon } from 'react-materialize';
+import { Row, Col, Collapsible, CollapsibleItem, Button, Icon } from 'react-materialize';
 import UserStore from '../store/userStore';
 import LessonPlayer from '../lessonPlayer/lessonPlayer';
 

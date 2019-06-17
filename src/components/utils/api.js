@@ -2,17 +2,18 @@ const PIXEL_KAIROS_API = 'http://localhost/pixelKairos/public/api/';
 export const TOKEN_KEY = 'PK_TOKEN';
 
 class ApiWrapper {
-  static getData(entity) {
-    return fetch(
+  static async getData(entity) {
+    const response = await fetch(
       PIXEL_KAIROS_API+entity
-    )
-      .then(response => response.json());
+    );
+
+    return await response.json();
   }
 
   static isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 
-  static makeLogin(credentials) {
-    return fetch(
+  static async makeLogin(credentials) {
+    const response = await fetch(
       PIXEL_KAIROS_API+'login', {
         method: 'POST',
         headers: {
@@ -20,23 +21,26 @@ class ApiWrapper {
         },
         body : JSON.stringify(credentials)
       }
-    ).then(response => response.json());
+    );
+
+    return await response.json();;
   }
 
-  static logout() {
+  static async logout() {
     let tokenToRemove = localStorage.getItem(TOKEN_KEY);
+
     localStorage.removeItem(TOKEN_KEY);
-    return fetch(
+
+    const response = await fetch(
       PIXEL_KAIROS_API+'logout', {
         method: 'POST',
         headers: {
           "Authorization": `Bearer ${tokenToRemove}`,
         },
       }
-    ).then(response => response.json())
-    .then(response => {
-        console.log(response);
-    });
+    );
+
+    return await response.json();
   }
 }
 
